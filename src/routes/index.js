@@ -1,10 +1,11 @@
 import { Create } from "@mui/icons-material";
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import EventDetails from "../presentation/EventDetails";
 import Home from "../presentation/Home";
 import Layout from "../presentation/Layout";
 import Login from "../presentation/Login";
+import EventDetails from "../presentation/EventDetails";
+import Wallet from '../presentation/Wallet'
 import CreateEvent from "../presentation/CreateEvent";
 import Profile from "../presentation/Profile";
 import { RequireAuth } from "./RequireAuth";
@@ -20,6 +21,7 @@ export default function router() {
             {
                 <Routes>
                     <Route path="testing" element={<Testing />}></Route>
+                    <Route path="wallet" element={<Wallet />}></Route>
 
                     <Route path="/login" element={<NotRequireAuth redirect="/" />}>
                         <Route index element={<Login />} />
