@@ -1,9 +1,15 @@
-import React from 'react'
-
+import React from "react";
+import BottomNav from "../Components/BottomNav";
+import TopUser from "./TopUser";
+import ProfileTabs from "./ProfileTabs";
 const index = () => {
   return (
-    <div>user</div>
-  )
-}
+    <div>
+      <TopUser />
+      <BottomNav />
+      <ProfileTabs />
+    </div>
+  );
+};
 
-export default index
+export default index;
