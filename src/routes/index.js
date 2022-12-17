@@ -4,6 +4,7 @@ import Home from "../presentation/Home";
 import Layout from "../presentation/Layout";
 import Login from "../presentation/Login";
 import EventDetails from "../presentation/EventDetails";
+import Camera from "../presentation/Camera";
 
 import SignUp from "../presentation/SignUp";
 
@@ -21,6 +22,7 @@ export default function router() {
 
           <Route path="signup" element={<SignUp />}></Route>
           <Route path="*" element={Login} />
+          <Route path="camera" element={<Camera/>} />
         </Routes>
       }
     </BrowserRouter>
