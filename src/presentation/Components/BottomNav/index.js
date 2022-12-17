@@ -22,7 +22,9 @@ export default function SimpleBottomNavigation() {
         >
           <BottomNavigationAction icon={<img src={camera} alt="camera" />} />
           <BottomNavigationAction icon={<img src={home} alt="home" />} />
-          <BottomNavigationAction icon={<img src={usersquare} alt="userSquare" />} />
+          <BottomNavigationAction
+            icon={<img src={usersquare} alt="userSquare" />}
+          />
         </BottomNavigation>
       </Box>
     </div>
