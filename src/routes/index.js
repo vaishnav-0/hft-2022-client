@@ -1,9 +1,11 @@
+import { Create } from "@mui/icons-material";
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import EventDetails from "../presentation/EventDetails";
 import Home from "../presentation/Home";
 import Layout from "../presentation/Layout";
 import Login from "../presentation/Login";
-import EventDetails from "../presentation/EventDetails";
+import CreateEvent from "../presentation/CreateEvent";
 import Profile from "../presentation/Profile";
 import { RequireAuth } from "./RequireAuth";
 import Camera from "../presentation/Camera";
@@ -29,11 +31,13 @@ export default function router() {
                             <Route index element={<Home />} />
                         </Route>
                     </Route>
+
                     <Route path="eventdetails" element={<EventDetails />}></Route>
                     <Route path="profile" element={<Profile />}></Route>
 
-                    <Route path="camera" element={<Camera />} />
                     <Route path="signup" element={<SignUp />}></Route>
+                    <Route path="create" element={<CreateEvent />}></Route>
+
                     <Route path="*" element={Login} />
                 </Routes>
             }
