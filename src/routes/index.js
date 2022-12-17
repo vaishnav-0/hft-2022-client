@@ -6,6 +6,8 @@ import Login from "../presentation/Login";
 import EventDetails from "../presentation/EventDetails";
 import Profile from "../presentation/Profile";
 import { RequireAuth } from "./RequireAuth";
+import Camera from "../presentation/Camera";
+
 import SignUp from "../presentation/SignUp";
 import Testing from "../components/testing";
 import { NotRequireAuth } from "./NotRequireAuth";
@@ -27,7 +29,7 @@ export default function router() {
                     <Route path="eventdetails" element={<EventDetails />}></Route>
                     <Route path="profile" element={<Profile />}></Route>
 
-
+                    <Route path="camera" element={<Camera/>} />
                     <Route path="signup" element={<SignUp />}></Route>
                     <Route path="*" element={Login} />
                 </Routes>
