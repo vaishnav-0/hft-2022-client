@@ -1,0 +1,14 @@
+.pointCard{
+    background: #FFDFAE;
+    border-radius: 15px;
+    display:flex;
+    flex-direction: column;
+    padding:16px;
+    margin:8px;
+}
+.pointCard div{
+    display: flex;
+    flex-direction: row;
+    
+
+}

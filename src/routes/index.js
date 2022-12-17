@@ -4,7 +4,7 @@ import Home from "../presentation/Home";
 import Layout from "../presentation/Layout";
 import Login from "../presentation/Login";
 import EventDetails from "../presentation/EventDetails";
-
+import Wallet from '../presentation/Wallet'
 import SignUp from "../presentation/SignUp";
 
 export default function router() {
@@ -21,6 +21,7 @@ export default function router() {
 
           <Route path="signup" element={<SignUp />}></Route>
           <Route path="*" element={Login} />
+          <Route path="wallet" element={<Wallet/>}></Route>
         </Routes>
       }
     </BrowserRouter>

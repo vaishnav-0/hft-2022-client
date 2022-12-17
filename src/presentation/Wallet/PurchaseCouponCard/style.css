@@ -1,0 +1,23 @@
+.PurchaseCouponCard{
+    padding:16px;
+    border-radius: 16px;
+   justify-content: flex-end;
+background: linear-gradient(180deg, #8BA6FA 0%, #12286B 100%);
+/* drop_style */
+padding-top: 60px;
+box-shadow: 0px 0px 20px rgba(226, 228, 246, 0.9);
+border-radius: 15px;
+}
+.PurchaseCouponCard h4{
+    font-weight: bold;
+    color: white;
+
+}
+.PurchaseCouponCard div{
+    display:flex;
+    width:50%;
+    justify-content: center;
+    color:white;
+    flex-direction: row;
+    align-items: center;
+}
