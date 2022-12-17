@@ -1,21 +1,21 @@
 import React from "react";
 import TopButtons from "./TopButtons";
 import Header1 from "./Header1";
-import Header2 from "./Header2";
-import Header3 from "./Header3";
-import Header4 from "./Header4";
 import TopNav from "./TopNav";
-const index = () => {
+import { getEvents } from "../../functions/db";
+function Index() {
+  const [events, setEvents] = React.useState({});
+
+  React.useEffect(() => {
+    getEvents();
+  }, [])
   return (
     <div className="w-[90%] justify-center ml-5 space-y-4">
       <TopNav />
       <TopButtons />
       <Header1 />
-      <Header2 />
-      <Header3 />
-      <Header4 />
     </div>
   );
 };
 
-export default index;
+export default Index;

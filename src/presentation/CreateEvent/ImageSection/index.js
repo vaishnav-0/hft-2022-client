@@ -1,10 +1,10 @@
 import React from "react";
 
-const index = () => {
+const index = ({src}) => {
   return (
     <div className="m-5">
       <div className="w-[90%] h-32 bg-black">
-        <img src="" alt="" />
+        <img src={src} alt="" />
       </div>
     </div>
   );

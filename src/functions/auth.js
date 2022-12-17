@@ -11,6 +11,13 @@ export function setPrevSignedIn(s) {
         localStorage.removeItem('SignedIn')
 }
 
+
+export async function isAdmin(user) {
+    const token = await user.getIdTokenResult();
+    console.log(token)
+    return !!token.claims.admin;
+}
+
 // export function logAuth(data: Record<any, any>) {
 //     return post("/l", btoa(JSON.stringify(data)));
 // }

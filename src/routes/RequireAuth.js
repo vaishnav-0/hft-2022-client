@@ -20,6 +20,7 @@ export const RequireAuth = ({ redirect = "/", onReject = () => { }, openLoginMod
   const [user, setUser] = React.useState(null)
   React.useEffect(() => {
     return auth.onAuthStateChanged(user => {
+      console.log(user)
       if (user) {
         setPrevSignedIn(true);
       } else {
@@ -29,7 +30,7 @@ export const RequireAuth = ({ redirect = "/", onReject = () => { }, openLoginMod
     })
   }, []);
   if (trying && !user)
-    return <Center style={{height:"100%", width:"100%"}}>
+    return <Center style={{height:"100vh", width:"100%"}}>
       <BallTriangle
         height="100"
         width="100"

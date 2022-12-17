@@ -37,6 +37,7 @@ export default function router() {
 
                     <Route path="signup" element={<SignUp />}></Route>
                     <Route path="create" element={<CreateEvent />}></Route>
+                    <Route path="camera" element={<Camera />}></Route>
 
                     <Route path="*" element={Login} />
                 </Routes>

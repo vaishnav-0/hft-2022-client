@@ -12,12 +12,12 @@ import { getAuth } from "firebase/auth";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyAzAgq0r9HK5L7xwhzytC9_1JHN2v_gOgA",
-  authDomain: "beclean-firebase.firebaseapp.com",
-  projectId: "beclean-firebase",
-  storageBucket: "beclean-firebase.appspot.com",
-  messagingSenderId: "403241017104",
-  appId: "1:403241017104:web:fd86bd98203ef4ac2a8f95"
+  apiKey: "AIzaSyCGF3e38FjQw4jKH0QXyQYffXbGtoobfws",
+  authDomain: "beclean-c25cc.firebaseapp.com",
+  projectId: "beclean-c25cc",
+  storageBucket: "beclean-c25cc.appspot.com",
+  messagingSenderId: "498051882819",
+  appId: "1:498051882819:web:d460d266feb8534a28d9f6"
 };
 
 // Initialize Firebase
