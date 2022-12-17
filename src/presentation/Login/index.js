@@ -1,7 +1,8 @@
 import React from "react";
 import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
-import { auth } from "../firebase";
+import { auth } from "../../firebase";
 import { useNavigate } from "react-router-dom";
+import Center from "../../components/Center";
 
 const Login = () => {
 
@@ -34,7 +35,7 @@ const Login = () => {
       });
 
   return (
-    <div className="h-full min-h-full bg-gradient-to-tl from-white-400 to-indigo-900 w-full py-64 px-4">
+    <Center style={{height:"100vh"}}> 
       <div className="flex flex-col items-center justify-center">
         <h2 className=" font-extrabold text-transparent text-5xl bg-clip-text bg-gradient-to-r from-[#3F63F4] to-[#0A0C2B]">
           Be Clean
@@ -60,6 +61,7 @@ const Login = () => {
             </a>
           </p>
           <button
+            onClick={signIn}
             aria-label="Continue with google"
             role="button"
             className="focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-gray-700 py-3.5 px-4 border rounded-lg border-gray-700 flex items-center w-full mt-10"
@@ -74,7 +76,7 @@ const Login = () => {
           </button>
         </div>
       </div>
-    </div>
+    </Center>
   );
 };
 
