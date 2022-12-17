@@ -20,9 +20,9 @@ const index = () => {
   return (
     <div>
       <div className="flex w-full p-0 m-0 justify-between">
-        <Card sx={{ minWidth: 280, maxWidth: 280 }}>
+        <Card className="w-full p-0" sx={{ minWidth: 280, maxWidth: 280 }}>
           <CardContent>
-            <img src={map1} alt="" />
+            <img src={map1}  alt="" />
           </CardContent>
         </Card>
         <div className="flex flex-col space-y-11">
