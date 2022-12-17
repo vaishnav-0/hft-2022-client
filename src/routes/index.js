@@ -10,7 +10,6 @@ export default function router() {
       {
         <Routes>
           <Route path="login" element={<Login />}></Route>
-
           <Route path="/" element={<Home />}></Route>
           <Route path="signup" element={<SignUp />}></Route>
           <Route path="*" element={Login} />
