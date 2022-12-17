@@ -19,17 +19,20 @@ export default function router() {
                 <Routes>
                     <Route path="testing" element={<Testing />}></Route>
 
-                    <Route path="login" element={<NotRequireAuth redirect="/"><Login /></NotRequireAuth>}></Route>
+                    <Route path="/login" element={<NotRequireAuth redirect="/" />}>
+                        <Route index element={<Login />} />
 
-                    <Route path="/" element={<RequireAuth redirect="/login"/>}>
-                        <Route path="/" element={<Layout /> }>
-                            <Route index element={<Home/>} />
+                    </Route>
+
+                    <Route path="/" element={<RequireAuth redirect="/login" />}>
+                        <Route path="/" element={<Layout />}>
+                            <Route index element={<Home />} />
                         </Route>
                     </Route>
                     <Route path="eventdetails" element={<EventDetails />}></Route>
                     <Route path="profile" element={<Profile />}></Route>
 
-                    <Route path="camera" element={<Camera/>} />
+                    <Route path="camera" element={<Camera />} />
                     <Route path="signup" element={<SignUp />}></Route>
                     <Route path="*" element={Login} />
                 </Routes>
