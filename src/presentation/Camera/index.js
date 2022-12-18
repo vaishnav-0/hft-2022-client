@@ -1,7 +1,6 @@
 import React, { useRef, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import Webcam from 'react-webcam'
-import ImageCapture from 'react-image-capture'
 import { getLocation } from '../../functions/location'
 
 export default function Camera({ onClick }) {
