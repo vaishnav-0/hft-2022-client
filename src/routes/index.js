@@ -6,6 +6,7 @@ import Login from "../presentation/Login";
 import EventDetails from "../presentation/EventDetails";
 import Wallet from '../presentation/Wallet'
 import SignUp from "../presentation/SignUp";
+import Settings from "../presentation/Settings";
 
 export default function router() {
   return (
@@ -22,6 +23,7 @@ export default function router() {
           <Route path="signup" element={<SignUp />}></Route>
           <Route path="*" element={Login} />
           <Route path="wallet" element={<Wallet/>}></Route>
+          <Route path="settings" element={<Settings/>}></Route>
         </Routes>
       }
     </BrowserRouter>
