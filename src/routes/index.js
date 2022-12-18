@@ -14,6 +14,7 @@ import Camera from "../presentation/Camera";
 import SignUp from "../presentation/SignUp";
 import Testing from "../components/testing";
 import { NotRequireAuth } from "./NotRequireAuth";
+import Settings from "../presentation/Settings";
 
 export default function router() {
     return (
@@ -21,7 +22,6 @@ export default function router() {
             {
                 <Routes>
                     <Route path="testing" element={<Testing />}></Route>
-                    <Route path="wallet" element={<Wallet />}></Route>
 
                     <Route path="/login" element={<NotRequireAuth redirect="/" />}>
                         <Route index element={<Login />} />
@@ -32,13 +32,15 @@ export default function router() {
                         <Route path="/" element={<Layout />}>
                             <Route index element={<Home />} />
                         </Route>
+                        <Route path="wallet" element={<Wallet />}></Route>
+                        <Route path="settings" element={<Settings />}></Route>
                         <Route path="create" element={<CreateEvent />}></Route>
                         <Route path="camera" element={<Camera />}></Route>
                         <Route path="eventdetails" element={<EventDetails />}></Route>
-                    <Route path="profile" element={<Profile />}></Route>
+                        <Route path="profile" element={<Profile />}></Route>
                     </Route>
 
-                    
+
 
                     <Route path="signup" element={<SignUp />}></Route>
 
