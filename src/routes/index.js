@@ -32,14 +32,16 @@ export default function router() {
                         <Route path="/" element={<Layout />}>
                             <Route index element={<Home />} />
                         </Route>
+                        <Route path="create" element={<CreateEvent />}></Route>
+                        <Route path="camera" element={<Camera />}></Route>
+                        <Route path="eventdetails" element={<EventDetails />}></Route>
+                    <Route path="profile" element={<Profile />}></Route>
                     </Route>
 
-                    <Route path="eventdetails" element={<EventDetails />}></Route>
-                    <Route path="profile" element={<Profile />}></Route>
+                    
 
                     <Route path="signup" element={<SignUp />}></Route>
-                    <Route path="create" element={<CreateEvent />}></Route>
-                    <Route path="camera" element={<Camera />}></Route>
+
 
                     <Route path="*" element={Login} />
                 </Routes>

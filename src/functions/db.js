@@ -1,7 +1,7 @@
 import { async } from "@firebase/util";
 import { firestore } from "../firebase";
 
-import { addDoc, collection, serverTimestamp, getDocs, doc, deleteDoc, setDoc, updateDoc, query, where, collectionGroup, FieldPath } from "firebase/firestore";
+import { addDoc, collection, serverTimestamp, getDocs, getDoc, doc, deleteDoc, setDoc, updateDoc, query, where, collectionGroup, FieldPath } from "firebase/firestore";
 import { uploadEventImages } from "./storage";
 
 // Add a new document in collection "cities"
@@ -44,6 +44,16 @@ export async function getEvents() {
     return events;
 }
 
+export async function getEvent(eventId) {
+    const querySnapshot = await getDoc(doc(firestore, "events", eventId));
+    return querySnapshot.data();
+}
+
+export async function isLiked(eventId, user) {
+    const querySnapshot = await getDoc(doc(firestore, "users", user, "likes", eventId));
+    console.log(querySnapshot.exists())
+    return querySnapshot.exists();
+}
 
 export async function getLikedEvents(user) {
     const querySnapshot = await getDocs(collection(firestore, `users/${user}/likes`));
@@ -72,13 +82,13 @@ export async function unlikeEvent(eventId, userId) {
 }
 
 export async function getLiked(eventIds, userId) {
-    const q = query(collection(firestore, `users/${userId}/likes`), where("eventId", 'in', eventIds));
-    const querySnapshot = await getDocs(q);
+    console.log(eventIds)
+    const liked = await getContentById(eventIds, `users/${userId}/likes`, "eventId");
     const likes = {}
-    querySnapshot.forEach((doc) => {
-        console.log(doc)
+    liked.forEach((doc) => {
         likes[doc.id] = true;;
     });
+    console.log(likes)
     return likes;
 
 }
@@ -153,4 +163,38 @@ export async function getContributedEvents(user) {
     });
     return events;
 
+}
+
+export async function getContentById(ids, path, match) {
+    // don't run if there aren't any ids or a path for the collection
+    if (!ids || !ids.length || !path) return [];
+
+    const collectionPath = collection(firestore, path);
+    const batches = [];
+
+    while (ids.length) {
+        // firestore limits batches to 10
+        const batch = ids.splice(0, 10);
+
+        // add the batch request to to a queue
+        batches.push(
+            getDocs(query(
+                collectionPath,
+                where(
+                    match,
+                    'in',
+                    [...batch]
+                ))))
+    }
+
+    // after all of the data is fetched, return it
+    return Promise.all(batches).then(results => {
+        const ret = []
+        results.forEach((docs) => {
+            docs.forEach((doc) => {
+                ret.push({ id: doc.id, ...doc.data() })
+            });
+        });
+        return ret;
+    });
 }

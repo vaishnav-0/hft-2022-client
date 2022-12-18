@@ -6,14 +6,16 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import "./style.css";
 import { likeEvent, unlikeEvent } from "../../../functions/db";
 import { auth } from "../../../firebase";
+import { useNavigate } from "react-router-dom";
 
 function Index({ id, location, likes, userName, liked }) {
   const user = auth.currentUser;
   const [isLiked, setIsLiked] = React.useState(liked);
   const [likeCount, setLikeCount] = React.useState(likes);
-
+  const navigate = useNavigate();
   const isLiking = React.useRef(false);
-  const like = () => {
+  const like = (e) => {
+    e.stopPropagation();
     if (!isLiking.current) {
       isLiking.current = true;
       if (!isLiked) {
@@ -42,7 +44,7 @@ function Index({ id, location, likes, userName, liked }) {
     setIsLiked(liked);
   }, [liked])
   return (
-    <div className="w-100 content-center justify-center ">
+    <div onClick={() => navigate("/eventDetails", { state: { id: id } })} className="w-100 content-center justify-center ">
       <div id="base_card">
         <div id="content_card">
           <div>

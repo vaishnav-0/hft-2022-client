@@ -14,9 +14,9 @@ function Index() {
 
     getEvents().then(events => {
       setEvents(events)
-      getLiked(Object.keys(events), user.uid).then(liked => {
-        setLiked(liked);
-        console.log(liked)
+      getLiked(Object.keys(events), user.uid).then(l => {
+        console.log("kikekek", l)
+        setLiked(l);
       })
       console.log(events)
     });
@@ -28,7 +28,7 @@ function Index() {
 
       {
         Object.entries(events).map(([eventKey, eventData], i) => {
-          console.log(liked, eventKey,!!liked[eventKey]);
+          console.log(liked, eventKey, !!liked[eventKey]);
           return <Header1 key={i} id={eventKey} location={eventData.location} userName={eventData.creatorName} likes={eventData.like_count ?? 0} liked={!!liked[eventKey]} />
 
         })

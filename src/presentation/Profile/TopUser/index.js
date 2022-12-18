@@ -10,7 +10,9 @@ import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
-const index = () => {
+import { auth } from "../../../firebase";
+function Index() {
+  const user = auth.currentUser;
   return (
     <div>
       <div className="m-10 flex flex-row justify-center">
@@ -31,7 +33,7 @@ const index = () => {
         />
       </div>
       <div className="flex flex-row justify-center">
-        <p className="font-poppins font-bold text-[1.5rem]">Najid Navas</p>
+        <p className="font-poppins font-bold text-[1.5rem]">{user.displayName}</p>
       </div>
 
       <div className="mt-5 flex flex-row justify-center">
@@ -73,7 +75,7 @@ const index = () => {
               Pending
             </div>
             <Typography
-              sx={{ fontSize: 18, fontWeight: 600 ,marginBottom: 2 }}
+              sx={{ fontSize: 18, fontWeight: 600, marginBottom: 2 }}
               color="text.secondary"
               gutterBottom
             >
@@ -86,4 +88,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default Index;

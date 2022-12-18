@@ -1,6 +1,8 @@
 import React from 'react'
 import close from "../../Common/icons/close.svg"
-const index = () => {
+import { useNavigate } from 'react-router-dom';
+function Index() {
+  const navigate = useNavigate()
   return (
     <div className="container  mt-12 max-w-md  ">
       <div className="flex flex-row justify-between ">
@@ -10,13 +12,13 @@ const index = () => {
           </h4>
         </div>
         <div className=" flex flex-row space-x-4">
-          <img src={close} alt="" />
+          <img src={close} alt="" onClick={() => navigate("/")} />
         </div>
-          </div>
-          
-          
+      </div>
+
+
     </div>
   );
 }
 
-export default index
+export default Index
