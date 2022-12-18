@@ -1,12 +1,10 @@
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import React from "react";
 import { auth } from "../../../firebase";
-import { likeEvent, unlikeEvent } from "../../../functions/db";
 import Celebrities from "../../Common/icons/Celebrities.svg";
 import Group from "../../Common/icons/Group.svg";
 import "./style.css";
 import { likeEvent, unlikeEvent } from "../../../functions/db";
-import { auth } from "../../../firebase";
 import { useNavigate } from "react-router-dom";
 
 function Index({ id, location, likes, userName, liked }) {
