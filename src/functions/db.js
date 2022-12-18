@@ -153,8 +153,8 @@ export async function getContributedEvents(user) {
     const events = {}
     querySnapshot.forEach((doc) => {
 
-        console.log(doc)
         events[doc.id] = doc.data();
+        
     });
     const q = query(collection(firestore, `events/`), where(FieldPath.documentId(), 'in', events.map(e => e.id)));
     const eventQuerySnapshot = await getDocs(q);

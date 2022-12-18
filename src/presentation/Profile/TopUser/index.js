@@ -1,6 +1,6 @@
 import Button from "@mui/material/Button";
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import avatar from "../../Common/icons/avatar.svg";
 import coin from "../../Common/icons/coin.svg";
 import Group from "../../Common/icons/Group.svg";
@@ -13,6 +13,7 @@ import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import { auth } from "../../../firebase";
 function Index() {
+  const navigate = useNavigate();
   const user = auth.currentUser;
   return (
     <div>
@@ -32,6 +33,7 @@ function Index() {
         <img
           className="w-25 h-20 rounded-full"
           src={settings}
+          onClick={()=>{navigate("/settings")}}
           alt="Rounded avatar"
         />
       </div>

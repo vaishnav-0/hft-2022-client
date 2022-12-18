@@ -8,7 +8,7 @@ import CardText from "./CardText";
 import Top from "./Top";
 import { auth } from "../../firebase";
 import { useLocation } from "react-router-dom";
-import { getEvent } from "../../functions/db";
+import { contributeEvent, getEvent } from "../../functions/db";
 
 function Index() {
   const { state } = useLocation();
@@ -22,8 +22,10 @@ function Index() {
     })
   }, [])
 
-  const handkeClick = () => {
-    message.success("You have successfully registered for the event");
+  const handleClick = () => {
+    contributeEvent(state.id, auth.currentUser.uid, []).then(() => {
+      message.success("You have successfully registered for the event");
+    })
   };
   return (
     <div className="m-5 space-y-6">
@@ -42,7 +44,7 @@ function Index() {
       <CardText value={event.description} />
       <button
         onClick={() => {
-          handkeClick();
+          handleClick();
         }}
         type="button"
         className="fixed bottom-12 w-[90%] text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-[2rem] text-sm px-5 py-2.5 text-center mr-2 mb-2"
