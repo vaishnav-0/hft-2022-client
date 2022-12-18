@@ -1,5 +1,6 @@
 import Button from "@mui/material/Button";
 import React from "react";
+import { Link } from "react-router-dom";
 import avatar from "../../Common/icons/avatar.svg";
 import coin from "../../Common/icons/coin.svg";
 import Group from "../../Common/icons/Group.svg";
@@ -16,11 +17,13 @@ function Index() {
   return (
     <div>
       <div className="m-10 flex flex-row justify-center">
-        <img
-          className="w-25 h-20 rounded-full"
-          src={wallet}
-          alt="Rounded avatar"
-        />
+        <Link to="/wallet">
+          <img
+            className="w-25 h-20 rounded-full"
+            src={wallet}
+            alt="Rounded avatar"
+          />
+        </Link>
         <img
           className="w-20 h-15 rounded-full"
           src={avatar}
