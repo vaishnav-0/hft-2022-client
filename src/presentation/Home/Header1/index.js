@@ -1,9 +1,45 @@
+import FavoriteIcon from "@mui/icons-material/Favorite";
 import React from "react";
+import { auth } from "../../../firebase";
+import { likeEvent, unlikeEvent } from "../../../functions/db";
 import Celebrities from "../../Common/icons/Celebrities.svg";
 import Group from "../../Common/icons/Group.svg";
-import Heart from "../../Common/icons/heart.svg";
 import "./style.css";
-const index = ({ location, likes, userName }) => {
+
+function Index({ id, location, likes, userName, liked }) {
+  const user = auth.currentUser;
+  const [isLiked, setIsLiked] = React.useState(liked);
+  const [likeCount, setLikeCount] = React.useState(likes);
+
+  const isLiking = React.useRef(false);
+  const like = () => {
+    if (!isLiking.current) {
+      isLiking.current = true;
+      if (!isLiked) {
+        likeEvent(id, user.uid)
+          .then(() => {
+            setIsLiked(true);
+            setLikeCount((prev) => prev + 1);
+          })
+          .finally(() => {
+            isLiking.current = false;
+          });
+      } else {
+        unlikeEvent(id, user.uid)
+          .then(() => {
+            setIsLiked(false);
+            setLikeCount((prev) => prev - 1);
+          })
+          .finally(() => {
+            isLiking.current = false;
+          });
+      }
+    }
+  };
+
+  React.useEffect(() => {
+    setIsLiked(liked);
+  }, [liked]);
   return (
     <div className="w-100 content-center justify-center ">
       <div id="base_card">
@@ -19,14 +55,17 @@ const index = ({ location, likes, userName }) => {
             </div>
             <div>
               <img src={Group} alt="another" />
-              <p>{likes}</p>
-              <img src={Heart} alt="another" />
+              <p>{likeCount}</p>
+              <FavoriteIcon
+                style={{ color: isLiked ? "red" : "white" }}
+                onClick={like}
+              />
             </div>
           </div>
         </div>
       </div>
     </div>
   );
-};
+}
 
-export default index;
+export default Index;

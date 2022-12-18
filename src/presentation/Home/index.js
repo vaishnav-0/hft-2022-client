@@ -2,18 +2,37 @@ import React from "react";
 import TopButtons from "./TopButtons";
 import Header1 from "./Header1";
 import TopNav from "./TopNav";
-import { getEvents } from "../../functions/db";
+import { getEvents, getLiked } from "../../functions/db";
+import { auth } from "../../firebase";
 function Index() {
   const [events, setEvents] = React.useState({});
+  const [liked, setLiked] = React.useState({});
+
+  const user = auth.currentUser;
 
   React.useEffect(() => {
-    getEvents();
+
+    getEvents().then(events => {
+      setEvents(events)
+      getLiked(Object.keys(events), user.uid).then(liked => {
+        setLiked(liked);
+        console.log(liked)
+      })
+      console.log(events)
+    });
   }, [])
   return (
     <div className="w-[90%] justify-center ml-5 space-y-4">
       <TopNav />
       <TopButtons />
-      <Header1 />
+
+      {
+        Object.entries(events).map(([eventKey, eventData], i) => {
+          console.log(liked, eventKey,!!liked[eventKey]);
+          return <Header1 key={i} id={eventKey} location={eventData.location} userName={eventData.creatorName} likes={eventData.like_count ?? 0} liked={!!liked[eventKey]} />
+
+        })
+      }
     </div>
   );
 };

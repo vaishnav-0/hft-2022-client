@@ -39,11 +39,11 @@ export async function getEvents() {
     const querySnapshot = await getDocs(collection(firestore, "events"));
     const events = {}
     querySnapshot.forEach((doc) => {
-        console.log(doc)
         events[doc.id] = doc.data();
     });
     return events;
 }
+
 
 export async function getLikedEvents(user) {
     const querySnapshot = await getDocs(collection(firestore, `users/${user}/likes`));
